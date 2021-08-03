@@ -22,12 +22,14 @@ flow:
   - status_code: ${status_code}
   - return_code: ${return_code}
   - response_headers: ${response_headers}
+  - output1: ${output_coming_from_text}
   workflow:
   - http_client_action:
       navigate:
       - SUCCESS: SUCCESS
       - FAILURE: on_failure
       publish:
+      - output_coming_from_text
       - return_result
       - error_message
       - status_code
